@@ -1,8 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 
-const InstructionText = ({ children }) => {
-  return <Text style={styles.instructionText}>{children}</Text>;
+interface InstructionTextProps {
+  text: string;
+}
+
+const InstructionText = ({ text }: InstructionTextProps) => {
+  return <Text style={styles.instructionText}>{text}</Text>;
 };
 
 const styles = StyleSheet.create({

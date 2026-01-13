@@ -1,8 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
-const AppTitle = ({ children }) => {
-  return <Text style={styles.title}>{children}</Text>;
+interface AppTitleProps {
+  text: string;
+}
+
+const AppTitle = ({ text }: AppTitleProps) => {
+  return <Text style={styles.title}>{text}</Text>;
 };
 
 const styles = StyleSheet.create({

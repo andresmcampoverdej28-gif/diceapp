@@ -35,9 +35,10 @@ export default function DiceGame() {
   return (
     <SceneLayout backgroundColor="#1a1a2e">
       <View style={styles.content}>
-        <AppTitle text="Dado Virtual" iconName="dice" />
+        <AppTitle text="Dado Virtual"/>
         <Dice3D 
           isRolling={isRolling}
+          currentNumber={currentNumber}
           size={300}
         />
         <InstructionBox text={isRolling ? "Lanzando..." : "¡Agita tu teléfono!"} />

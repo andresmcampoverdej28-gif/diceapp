@@ -1,3 +1,5 @@
+import SceneLayout from '@/templates/SceneLayout';
+
 import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
@@ -9,22 +11,31 @@ export default function Index() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>🎮 Mini Juegos</Text>
-      <Pressable style={styles.button} onPress={navigateToDice}>
-        <Text style={styles.buttonText}>🎲 Jugar al Dado</Text>
-      </Pressable>
-    </View>
+    <SceneLayout>
+      <View style={styles.content}>
+        <View style={styles.titleContainer}>
+
+          <Text style={styles.title}>Mini Juegos</Text>
+        </View>
+        
+        <Pressable style={styles.button} onPress={navigateToDice}>
+
+          <Text style={styles.buttonText}>Jugar al Dado</Text>
+        </Pressable>
+      </View>
+    </SceneLayout>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  content: {
     alignItems: 'center',
-    backgroundColor: '#1a1a2e',
     gap: 30,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 15,
   },
   title: {
     fontSize: 36,
@@ -32,6 +43,9 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
     backgroundColor: '#e74c3c',
     paddingHorizontal: 40,
     paddingVertical: 15,

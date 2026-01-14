@@ -1,6 +1,9 @@
+import SceneLayout from '@/templates/SceneLayout';
 import React from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
-import DiceContainer from './DiceContainer';
+import { StyleSheet, View } from 'react-native';
+import AppTitle from '../atoms/AppTitle';
+import DiceFace from '../molecules/DiceFace';
+import InstructionBox from '../molecules/InstructionBox';
 
 interface DiceScreenProps {
   currentNumber?: number;
@@ -12,26 +15,24 @@ interface DiceScreenProps {
 const DiceScreen = ({ 
   currentNumber = 1,
   instruction = "¡Agita tu teléfono!",
-  title = "🎲 Dado Virtual",
+  title = "Dado Virtual",
   backgroundColor = '#1a1a2e'
 }: DiceScreenProps) => {
   return (
-    <View style={[styles.screen, { backgroundColor }]}>
-      <StatusBar barStyle="light-content" />
-      <DiceContainer 
-        currentNumber={currentNumber}
-        instruction={instruction}
-        title={title}
-      />
-    </View>
+    <SceneLayout backgroundColor={backgroundColor}>
+      <View style={styles.content}>
+        <AppTitle text={title} iconName="dice" />
+        <DiceFace number={currentNumber} />
+        <InstructionBox text={instruction} />
+      </View>
+    </SceneLayout>
   );
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
+  content: {
     alignItems: 'center',
+    gap: 40,
   },
 });
 

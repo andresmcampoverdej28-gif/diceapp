@@ -1,6 +1,10 @@
-import DiceScreen from '@/components/organisms/DiceScreen';
+import AppTitle from '@/components/atoms/AppTitle';
+import InstructionBox from '@/components/molecules/InstructionBox';
+import Dice3D from '@/components/organisms/Dice3D';
 import useAccelerometer from '@/lib/modules/sensors/acelerometer/useAcelerometer';
+import SceneLayout from '@/templates/SceneLayout';
 import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 export default function DiceGame() {
   const [currentNumber, setCurrentNumber] = useState<number>(1);
@@ -29,11 +33,23 @@ export default function DiceGame() {
   });
 
   return (
-    <DiceScreen 
-      currentNumber={currentNumber}
-      instruction={isRolling ? "🎲 Lanzando..." : "¡Agita tu teléfono!"}
-      title="🎲 Dado Virtual"
-      backgroundColor="#1a1a2e"
-    />
+    <SceneLayout backgroundColor="#1a1a2e">
+      <View style={styles.content}>
+        <AppTitle text="Dado Virtual" iconName="dice" />
+        <Dice3D 
+          isRolling={isRolling}
+          size={300}
+        />
+        <InstructionBox text={isRolling ? "Lanzando..." : "¡Agita tu teléfono!"} />
+      </View>
+    </SceneLayout>
   );
 }
+
+const styles = StyleSheet.create({
+  content: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 40,
+  },
+});

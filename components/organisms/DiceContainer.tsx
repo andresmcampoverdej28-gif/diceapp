@@ -13,7 +13,7 @@ interface DiceContainerProps {
 const DiceContainer = ({ 
   currentNumber = 1, 
   instruction = "¡Agita tu teléfono!",
-  title = "🎲 Dado Virtual"
+  title = "Dado Virtual"
 }: DiceContainerProps) => {
   return (
     <View style={styles.diceContainer}>
